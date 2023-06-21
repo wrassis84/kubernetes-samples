@@ -1,8 +1,3 @@
-https://markdownlivepreview.com/
-
-## Links
-You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
-
 ##### [Instalação do *kind*]():
 ```
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind \
