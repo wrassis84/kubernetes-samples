@@ -76,7 +76,7 @@ $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 `$ kubectl get node -o wide`
 
 ##### Exibe todos os *nodes* do *cluster* do com *debug* muito detalhado:
-`$ kubect get node -v9`
+`$ kubectl get node -v9`
 
 ##### Destrói um *cluster* criado com o *kind*:
 `$ kind delete cluster`
