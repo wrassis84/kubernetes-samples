@@ -1,10 +1,10 @@
-##### [Instalação do *kind*]():
+##### [Instalação do *kind*](https://kind.sigs.k8s.io/docs/user/quick-start/#installation):
 ```
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind \
 https://kind.sigs.k8s.io/dl/v0.19.0/kind-linux-amd64
 ```
 
-##### [Configuração do *kind*]():
+##### Configuração do *kind*:
 ```
 $ sudo mv -f kind /usr/local/bin/kind
 $ sudo chmod +x /usr/local/bin/kind
@@ -14,9 +14,9 @@ $ sudo chmod +x /usr/local/bin/kind
 `$ kind version`
 
 ##### Criação do *cluster* com *kind*:
+> Basta criar um arquivo, por exemplo "cluster-config.yml" com o conteúdo abaixo e executar o comando `$ kind create cluster --config cluster-config.yml`
 
 ```
-# This file: cluster-config.yml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 # One control plane node and three "workers".
@@ -53,11 +53,17 @@ https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
 
-#####
+##### Exibe os *contexts* disponíveis:
+`$ kubectl config get-contexts`
+> *Context* no *Kubernetes* é um grupo de parâmetros de acesso que definem com qual *cluster* estamos interagindo, com qual usuário e em qual *namespace* estamos trabalhando.
+Pode ser utilizado para definir diferentes políticas de acesso para diferentes propósitos. Se houver mais de um *cluster* criado, podemos acessá-lo com `$ kubectl config set-context kind-kind`
+
+##### Exibe informações sobre determinado *context*:
 `$ kubectl cluster-info --context kind-kind`
 
-##### Exibe todas as informações a respeito do *cluster* criado:
+##### Exibe todas as informações a respeito do *cluster* ou *context* disponível:
 `$ kubectl cluster-info dump`
+> Muito útil para diagnósticos.
 
 ##### Exibe todos os *pods* em detalhes (em todos os *namespaces*):
 `$ kubectl get pods -A -owide` ou `$ kubectl get pod -A -o wide`
@@ -68,7 +74,7 @@ $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ##### Exibe os namespaces disponíveis:
 `$ kubectl get namespaces`
 
-##### Exibe todos os *nodes* do *cluster* *Kubernetes*:
+##### Exibe todos os *nodes* do *cluster* *Kubernetes* ativo:
 `$ kubectl get node`
 
 ##### Exibe todos os *nodes* do *cluster* *Kubernetes* de forma detalhada:
@@ -76,7 +82,7 @@ $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 `$ kubectl get node -o wide`
 
 ##### Exibe todos os *nodes* do *cluster* do com *debug* muito detalhado:
-`$ kubectl get node -v9`
+`$ kubect get node -v9`
 
 ##### Destrói um *cluster* criado com o *kind*:
 `$ kind delete cluster`
@@ -170,7 +176,7 @@ $ kubectl create deployment strigus \
 ##### Exibe os *replicaset* de um *deployment* em determinado *namespace*:
 `$ kubectl get replicaset -n giropops`
 
-##### Exibe os detalhes de um *replicaset* (strigus-c8b68cff7) em determinado *namespace*:
+##### Exibe os detalhes de um *replicaset* (strigus-c8b68cff7)  *deployment* em determinado *namespace*:
 `$ kubectl describe replicaset strigus-c8b68cff7 -n giropops`
 
 ##### Exibe somente os nomes dos *pods* em determinado *namespace*:
